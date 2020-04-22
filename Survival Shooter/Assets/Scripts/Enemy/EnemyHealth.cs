@@ -3,20 +3,18 @@ using UnityEngine.AI;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public int startingHealth = 100;            // The amount of health the enemy starts the game with.
-    public int currentHealth;                   // The current health the enemy has.
-    public float sinkSpeed = 2.5f;              // The speed at which the enemy sinks through the floor when dead.
-    public int scoreValue = 10;                 // The amount added to the player's score when the enemy dies.
-    public AudioClip deathClip;                 // The sound to play when the enemy dies.
-
+    public int startingHealth = 100;          // The amount of health the enemy starts the game with.
+    public int currentHealth;                    // The current health the enemy has.
+    public float sinkSpeed = 2.5f;           // The speed at which the enemy sinks through the floor when dead.
+    public int scoreValue = 10;               // The amount added to the player's score when the enemy dies.
+    public AudioClip deathClip;              // The sound to play when the enemy dies.
 
     Animator anim;                              // Reference to the animator.
-    AudioSource enemyAudio;                     // Reference to the audio source.
-    ParticleSystem hitParticles;                // Reference to the particle system that plays when the enemy is damaged.
-    CapsuleCollider capsuleCollider;            // Reference to the capsule collider.
-    bool isDead;                                // Whether the enemy is dead.
-    bool isSinking;                             // Whether the enemy has started sinking through the floor.
-
+    AudioSource enemyAudio;              // Reference to the audio source.
+    ParticleSystem hitParticles;             // Reference to the particle system that plays when the enemy is damaged.
+    CapsuleCollider capsuleCollider;     // Reference to the capsule collider.
+    bool isDead;                                  // Whether the enemy is dead.
+    bool isSinking;                               // Whether the enemy has started sinking through the floor.
 
     void Awake()
     {
@@ -39,7 +37,6 @@ public class EnemyHealth : MonoBehaviour
             transform.Translate(-Vector3.up * sinkSpeed * Time.deltaTime);
         }
     }
-
 
     public void TakeDamage(int amount, Vector3 hitPoint)
     {
@@ -68,7 +65,6 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
-
     void Death()
     {
         // The enemy is dead.
@@ -84,7 +80,6 @@ public class EnemyHealth : MonoBehaviour
         enemyAudio.clip = deathClip;
         enemyAudio.Play();
     }
-
 
     public void StartSinking()
     {
